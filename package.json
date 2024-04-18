@@ -1,0 +1,42 @@
+{
+  "name": "update-package-bitbucket",
+  "version": "1.0.0",
+  "description": "The script that updates package.json in BitBucket repo and opens a pull request",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "dev": "nodemon",
+    "build": "rimraf ./dist && rimraf ./.temp && tsc",
+    "eslint": "eslint src/**/*.ts",
+    "eslint:fix": "eslint src/**/*.ts --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
+  },
+  "bin": {
+    "update-package-bitbucket": "dist/index.js"
+  },
+  "author": "Bohdan Yatsenko",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "husky": "^9.0.11",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@types/inquirer": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "bitbucket": "^2.11.0",
+    "eslint": "^8.57.0",
+    "inquirer": "^8.0.0",
+    "prettier": "^3.2.5",
+    "simple-git": "^3.24.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint"
+    }
+  }
+}
